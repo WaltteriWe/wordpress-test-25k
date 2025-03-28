@@ -4,18 +4,14 @@ get_header();
     <main class="full-width">
         <section class="single">
             <?php
-            if (have_posts()) :
-                while (have_posts()) :
+            if ( have_posts() ) :
+                while ( have_posts() ) :
                     the_post();
-                    ?>
-                    <article>
-                        <?php
-                        the_title('<h2>', '</h2>');
-                        the_content();
-                        ?>
-                    </article>
-                <?php
+                    the_title('<h1>', '</h1>');
+                    the_content();
                 endwhile;
+            else :
+                _e( 'Sorry, no posts matched your criteria.', 'textdomain' );
             endif;
             ?>
         </section>

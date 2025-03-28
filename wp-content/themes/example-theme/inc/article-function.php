@@ -1,20 +1,23 @@
 <?php
-function generate_article($products)
+function generate_article($products): void
 {
-    if ($products->have_posts()):
-        while ($products->have_posts()):
+    if ($products->have_posts()) :
+        while ($products->have_posts()) :
             $products->the_post();
             ?>
             <article class="product">
-                <?php the_post_thumbnail(); ?>
-                <?php the_title('<h3>', '</h3>');
-                the_excerpt();
+                <?php
+                the_post_thumbnail();
+                the_title('<h3>', '</h3>');
+                $excerpt = get_the_excerpt();
+                // the_post();
                 ?>
-                <p> <?php echo substr(get_the_excerpt(), 0, 80); ?>...
+                <p>
+                    <?php echo substr($excerpt, 0, 50); ?>...
                 </p>
                 <a href="<?php echo get_permalink(); ?>">Read More</a>
             </article>
         <?php
         endwhile;
     endif;
-}
+} // end generate_article
