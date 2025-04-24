@@ -68,7 +68,9 @@ add_action( 'wp_enqueue_scripts', 'mytheme_enqueue_styles' );
 
 // ajax functions
 function mytheme_enqueue_scripts(): void {
-    wp_register_script( 'single-post', get_template_directory_uri() . '/js/singlePost.js', [], '1.1', true );
+//    wp_register_script( 'single-post', get_template_directory_uri() . '/js/singlePost.js', [], '1.1', true );
+    wp_register_script( 'single-post', get_template_directory_uri() . '/js/singlePostJQ.js', ['jQuery'], '1.0', true );
+
     $script_data = array(
         'ajax_url' => admin_url( 'admin-ajax.php' ),
     );
